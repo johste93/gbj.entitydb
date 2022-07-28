@@ -80,7 +80,7 @@ namespace GBJ.EntityDB.Editor
 
             if (selectedRow > 0 && selectedRow <= rowsVisibleOnScreen)
             {
-                GUI.DrawTexture(new Rect(new Vector2(0, (selectedRow * TableViewStyles.lineHeight) - scrollPosition.y + EditorGUIUtility.standardVerticalSpacing), new Vector2(position.width, TableViewStyles.lineHeight)), Texture2D.whiteTexture);
+                GUI.DrawTexture(new Rect(new Vector2(0, (selectedRow * TableViewStyles.lineHeight) - scrollPosition.y + (EditorGUIUtility.standardVerticalSpacing * 0.5f)), new Vector2(position.width, TableViewStyles.lineHeight)), Texture2D.whiteTexture);
             }
             
             GUILayout.Space(TableViewStyles.lineHeight);
@@ -137,8 +137,7 @@ namespace GBJ.EntityDB.Editor
                 RefreshDictionary();
                 CreateNewEntry();
             }
-
-            //GUILayout.Space(2);
+            
             GUI.color = Color.white;
 
             DrawRow(@new, @new, false);
@@ -168,7 +167,7 @@ namespace GBJ.EntityDB.Editor
             DrawColumnNames();
         }
 
-        private void DrawRowBackground(float y, float height, Color color)
+        private void DrawFooterBackground(float y, float height, Color color)
         {
             GUI.color = color;
             GUI.DrawTexture(new Rect(new Vector2(0, y), new Vector2(position.width, height)), Texture2D.whiteTexture);
@@ -177,7 +176,7 @@ namespace GBJ.EntityDB.Editor
 
         protected void DrawFooter()
         {
-            DrawRowBackground(position.height - TableViewStyles.lineHeight - EditorGUIUtility.standardVerticalSpacing, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorBackgroundColor);
+            DrawFooterBackground(position.height - TableViewStyles.lineHeight - EditorGUIUtility.standardVerticalSpacing, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorBackgroundColor);
 
             EditorGUILayout.BeginHorizontal();
             {
