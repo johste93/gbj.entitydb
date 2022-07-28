@@ -45,7 +45,7 @@ namespace GBJ.EntityDB.Editor
 
         protected virtual void OnEnable()
         {
-            horizontalColumnCount =  EditorPrefs.GetInt($"{typeof(T).Name}_HorizontalColumnCount", maxColumnCount);
+            horizontalColumnCount = EditorPrefs.GetInt($"{typeof(T).Name}_HorizontalColumnCount", maxColumnCount);
             entitiesPrPageIndex = EditorPrefs.GetInt($"{typeof(T).Name}_EntitiesPrPage", 3);
             entitiesPrPage = int.Parse(entitiesPrPageOptions[entitiesPrPageIndex]);
             
@@ -210,10 +210,10 @@ namespace GBJ.EntityDB.Editor
                     GUILayout.FlexibleSpace();
 
                     int columnCount = EditorGUILayout.IntSlider("Horizontal Column Count", horizontalColumnCount, minHorizontalColumnCount, maxColumnCount);
-                    if (entitiesPrPageIndex != columnCount)
+                    if (horizontalColumnCount != columnCount)
                     {
                         horizontalColumnCount = columnCount;
-                        EditorPrefs.SetInt($"{nameof(T)}_HorizontalColumnCount", horizontalColumnCount);
+                        EditorPrefs.SetInt($"{typeof(T).Name}_HorizontalColumnCount", horizontalColumnCount);
                     }
 
                     int index = EditorGUILayout.Popup("Entities pr page", entitiesPrPageIndex, entitiesPrPageOptions);
@@ -221,7 +221,7 @@ namespace GBJ.EntityDB.Editor
                     {
                         entitiesPrPageIndex = index;
                         entitiesPrPage = int.Parse(entitiesPrPageOptions[entitiesPrPageIndex]);
-                        EditorPrefs.SetInt($"{nameof(T)}_EntitiesPrPage", entitiesPrPageIndex);
+                        EditorPrefs.SetInt($"{typeof(T).Name}_EntitiesPrPage", entitiesPrPageIndex);
                     }
                 }
                 GUILayout.EndHorizontal();
