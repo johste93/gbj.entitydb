@@ -41,7 +41,7 @@ public class PersonEntity : Entity
 }
 ```
 
-2. Manually create your table view editor class e.g: /Editor/PersonTableView.cs (I intend to auto generate this class in the future versions.)
+2. Manually create your table view editor class e.g: /Editor/PersonTableView.cs
 ```csharp
 using GBJ.EntityDB.Editor;
 using UnityEditor;
@@ -176,6 +176,8 @@ A: Before an asset can be assigned it must first be marked as addressable.
 Because of this the project has a lot boilerplate code repetition than I'm comfortable with. 
 
 > Make it easier to change where tables and constants are saved.
+
+> Autogenerate TableViews
 
 > Backport to older Unity versions.
 
