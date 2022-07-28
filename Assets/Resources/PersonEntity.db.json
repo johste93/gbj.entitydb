@@ -1,0 +1,26 @@
+{
+  "367d0d66-f5db-4f4a-8a74-9c6ea7f630a6": {
+    "Name": "Dennis",
+    "Age": 21,
+    "Prefab": {
+      "AssetGUID": "a4106f81b13ff4abf91817f5c774b89e",
+      "SubObjectName": null
+    }
+  },
+  "607bf1b6-db62-4372-aa4f-cb34513cb8db": {
+    "Name": "Peter",
+    "Age": 28,
+    "Prefab": {
+      "AssetGUID": "ff6c2921dac064a09b33a823c637f5a5",
+      "SubObjectName": null
+    }
+  },
+  "cd90a196-b813-426f-ab19-f2c411185c3d": {
+    "Name": "Olga",
+    "Age": 33,
+    "Prefab": {
+      "AssetGUID": "bb6b061f43be44f54a74b4964b0a6c09",
+      "SubObjectName": null
+    }
+  }
+}

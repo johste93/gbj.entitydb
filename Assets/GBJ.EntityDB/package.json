@@ -1,0 +1,24 @@
+{
+  "name": "gbj.entitydb",
+  "displayName": "Entity Database",
+  "author": {
+    "name": "Johannes Stensen",
+    "url": ""
+  },
+  "version": "0.0.1",
+  "unity": "2021.3",
+  "changelogUrl": "",
+  "documentationUrl": "",
+  "description": "A simple database utilizing addressable assets to reference almost any kind of native unity asset. Great for keeping track of items, character stats or stats.",
+  "keywords": [
+    "Database",
+    "Entity",
+    "Addressable",
+    "DB"
+  ],
+  "license": "MIT License",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2",
+    "com.unity.addressables": "1.18.19"
+  }
+}

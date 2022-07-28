@@ -1,0 +1,17 @@
+{
+    "name": "GBJ.EntityDB.Samples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cbbc11642e1cd4a0289ca099657953c3",
+        "GUID:15a0dd958426d4ba49ef89422ea1b1f4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
