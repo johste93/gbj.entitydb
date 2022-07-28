@@ -3,12 +3,12 @@
   "displayName": "Entity Database",
   "author": {
     "name": "Johannes Stensen",
-    "url": ""
+    "url": "https://github.com/johste93"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "unity": "2021.3",
   "changelogUrl": "",
-  "documentationUrl": "",
+  "documentationUrl": "https://github.com/johste93/gbj.entitydb",
   "description": "A simple database utilizing addressable assets to reference almost any kind of native unity asset. Great for keeping track of items, character stats or stats.",
   "keywords": [
     "Database",
