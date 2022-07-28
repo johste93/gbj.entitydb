@@ -161,13 +161,14 @@ namespace GBJ.EntityDB.Editor
         private float columnXPos;
         protected void DrawHeader()
         {
+            DrawBackground(0, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorLightBackgroundColor);
             columnXPos = TableViewStyles.standardHorizontalSpacing + -scrollPosition.x;
             DrawColumn(columnXPos,"#", x => ((Entity) x.Value).Index, TableViewStyles.leftMargin);
             columnXPos += TableViewStyles.leftMargin + TableViewStyles.standardHorizontalSpacing;
             DrawColumnNames();
         }
 
-        private void DrawFooterBackground(float y, float height, Color color)
+        private void DrawBackground(float y, float height, Color color)
         {
             GUI.color = color;
             GUI.DrawTexture(new Rect(new Vector2(0, y), new Vector2(position.width, height)), Texture2D.whiteTexture);
@@ -176,7 +177,7 @@ namespace GBJ.EntityDB.Editor
 
         protected void DrawFooter()
         {
-            DrawFooterBackground(position.height - TableViewStyles.lineHeight - EditorGUIUtility.standardVerticalSpacing, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorBackgroundColor);
+            DrawBackground(position.height - TableViewStyles.lineHeight - EditorGUIUtility.standardVerticalSpacing, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorBackgroundColor);
 
             EditorGUILayout.BeginHorizontal();
             {

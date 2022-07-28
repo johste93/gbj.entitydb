@@ -14,6 +14,7 @@ namespace GBJ.EntityDB.Editor
 
         internal const float scrollBarWidth = 12;
 
+        internal static Color editorLightBackgroundColor = new Color(0.2196078f, 0.2196078f, 0.2196078f, 1);
         internal static Color editorBackgroundColor = new Color(0.16470588235f, 0.16470588235f, 0.16470588235f, 1);
         
         private static GUIStyle _centeredLabelStyle;
