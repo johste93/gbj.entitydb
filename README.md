@@ -23,6 +23,14 @@ Great for keeping track of items, characters or quests.
     Newtonsoft.Json
     Unity.Addressables
 
+## Install via git URL
+
+Requires a version of unity that supports path query parameter for git packages (Unity >= 2019.3.4f1, Unity >= 2020.1a21). You can add https://github.com/johste93/gbj.entitydb.git?path=Assets/GBJ.EntityDB to Package Manager
+
+or add "gbj.entitydb": "https://github.com/johste93/gbj.entitydb.git?path=Assets/GBJ.EntityDB" to Packages/manifest.json.
+
+If you want to set a target version, gbj.entitydb uses the *.*.* release tag so you can specify a version like #0.0.2. For example https://github.com/johste93/gbj.entitydb.git?path=Assets/GBJ.EntityDB#0.0.2.
+
 ## Getting Started:
 
 1. Define your entity inheriting from Entity.cs
