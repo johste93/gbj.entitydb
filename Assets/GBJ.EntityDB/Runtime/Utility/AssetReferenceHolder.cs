@@ -82,13 +82,13 @@ namespace GBJ.EntityDB
 			return (GetAssetReference() != null ? GetAssetReference().GetHashCode() : 0);
 		}
 
+		public abstract void NewAssetReference(string guid);
+		
 #if UNITY_EDITOR
 		//This field is used to render the AssetReference Drawer in Editor Window.
 		[JsonIgnore] public UnityEditor.SerializedObject SerializedObject;
 
 		public abstract void Serialize();
-
-		public abstract void NewAssetReference(string guid);
 #endif
 	}
 }

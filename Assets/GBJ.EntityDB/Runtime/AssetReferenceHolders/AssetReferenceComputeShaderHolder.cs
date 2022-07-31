@@ -9,7 +9,7 @@ namespace GBJ.EntityDB.AssetReferenceHolders
 	{
 		public AssetReferenceComputeShader AssetReference;
 		public override AssetReference GetAssetReference() => AssetReference;
-
+		public override void NewAssetReference(string guid) => AssetReference = new AssetReferenceComputeShader(guid);
 
 #if UNITY_EDITOR
 		//This field is used to render the AssetReference Drawer in Editor Window.
@@ -20,9 +20,7 @@ namespace GBJ.EntityDB.AssetReferenceHolders
 			ScriptableObject = UnityEngine.ScriptableObject.CreateInstance<AssetReferenceScriptableObject>();
 			SerializedObject = new UnityEditor.SerializedObject(ScriptableObject);
 		}
-
-		public override void NewAssetReference(string guid) => AssetReference = new AssetReferenceComputeShader(guid);
-
+		
 		public class AssetReferenceScriptableObject : ScriptableObject
 		{
 			public AssetReferenceComputeShader AssetReference;
