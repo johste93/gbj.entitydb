@@ -64,6 +64,10 @@ namespace GBJ.EntityDB
 						return (T) entity;
 					});
 			}
+			else
+            {
+                table = new Dictionary<string, T>();
+            }
 		}
 		public virtual void Create() => table = new Dictionary<string, T>();
 
