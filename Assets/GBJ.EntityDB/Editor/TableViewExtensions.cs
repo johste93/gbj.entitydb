@@ -13,6 +13,11 @@ namespace GBJ.EntityDB.Editor
 {
     public static class TableViewExtensions
     {
+        public static void DrawEmpty<T>(this TableView<T> view) where T : Entity
+        {
+            EditorGUILayout.Space(view.columnWidth);
+        }
+            
         public static void DrawEntry<T>(this TableView<T> view, Getter<string> getter, Setter<string> setter, bool changeColorIfChanged = false, Getter<string?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
