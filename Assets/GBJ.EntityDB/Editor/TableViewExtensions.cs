@@ -15,7 +15,9 @@ namespace GBJ.EntityDB.Editor
     {
         public static void DrawEmpty<T>(this TableView<T> view) where T : Entity
         {
-            EditorGUILayout.Space(view.columnWidth);
+            GUIStyle style = new GUIStyle("box");
+            style.margin.left = style.margin.right = style.margin.top = style.margin.bottom = 0;
+            GUILayout.Box(string.Empty, style, GUILayout.Width(view.columnWidth));
         }
             
         public static void DrawEntry<T>(this TableView<T> view, Getter<string> getter, Setter<string> setter, bool changeColorIfChanged = false, Getter<string?> oldValue = null) where T : Entity
