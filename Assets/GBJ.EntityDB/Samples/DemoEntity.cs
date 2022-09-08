@@ -70,4 +70,7 @@ public class DemoEntity : Entity
 	
 	[JsonConverter(typeof(AssetReferenceHolderConverter<AssetReferenceModelHolder>))]
 	public AssetReferenceModelHolder ModelReference = new AssetReferenceModelHolder();
+	
+	[JsonConverter(typeof(AssetReferenceHolderConverter<AssetReferenceTextAssetHolder>))]
+	public AssetReferenceTextAssetHolder TextAssetReference = new AssetReferenceTextAssetHolder();
 }

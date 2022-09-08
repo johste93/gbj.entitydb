@@ -782,5 +782,41 @@ namespace GBJ.EntityDB.Editor
                 }
             }
         }
+        
+        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTextAssetHolder> getter, Setter<AssetReferenceTextAssetHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTextAssetHolder?> oldValue = null) where T : Entity
+        {
+            if (changeColorIfChanged && oldValue != null)
+                GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
+
+            if (getter() == null)
+                setter(new AssetReferenceTextAssetHolder());
+
+            if (getter().ScriptableObject == null)
+                getter().Serialize();
+
+            if (!string.IsNullOrEmpty(getter().AssetReference?.AssetGUID) && getter().AssetReference?.editorAsset == null)
+                GUI.color = Color.red; //Busted reference
+            
+            getter().ScriptableObject.AssetReference = getter().AssetReference;
+            getter().SerializedObject.Update();
+            var property = getter().SerializedObject.FindProperty(nameof(AssetReferenceTextAssetHolder.AssetReferenceScriptableObject.AssetReference));
+            EditorGUILayout.PropertyField(property, GUIContent.none, true, GUILayout.Width(view.columnWidth));
+
+            if (getter().ScriptableObject.AssetReference == null || !getter().ScriptableObject.AssetReference.RuntimeKeyIsValid())
+            {
+                getter().AssetReference = null;
+            }
+            else
+            {
+                if (getter().AssetReference == null || !getter().AssetReference.AssetGUID.Equals(getter().ScriptableObject.AssetReference.AssetGUID))
+                {
+                    getter().AssetReference = new AssetReferenceTextAsset(getter().ScriptableObject.AssetReference.AssetGUID);
+                }
+                else
+                {
+                    getter().AssetReference.SubObjectName = getter().ScriptableObject.AssetReference.SubObjectName;
+                }
+            }
+        }
     }
 }

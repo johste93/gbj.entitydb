@@ -145,6 +145,7 @@ PhysicsMaterial
 Scene
 Shader
 Sprite
+TextAsset
 Texture
 Texture2D
 Texture3D

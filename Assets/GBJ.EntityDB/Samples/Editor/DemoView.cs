@@ -12,7 +12,7 @@ namespace GBJ.EntityDB
 		[MenuItem("Tables/Demo")]
 		static void Init() => Init<DemoView>();
 
-		protected override int maxColumnCount => 25;
+		protected override int maxColumnCount => 26;
 		protected override void CreateNewEntry() => @new = new DemoEntity();
 
 		protected override void DrawColumnNames()
@@ -42,6 +42,7 @@ namespace GBJ.EntityDB
 			DrawColumn("Shader", x => x.Value.ShaderReference);
 			DrawColumn("VideoClip", x => x.Value.VideoClipReference);
 			DrawColumn("Model", x => x.Value.ModelReference);
+			DrawColumn("Text Asset", x => x.Value.TextAssetReference);
 		}
 
 		protected override void DrawRow(DemoEntity entry, DemoEntity unmodified, bool changeColorIfChanged = false)
@@ -71,6 +72,7 @@ namespace GBJ.EntityDB
 			this.DrawEntry(() => entry.ShaderReference, x => entry.ShaderReference = x, changeColorIfChanged, () => unmodified?.ShaderReference);
 			this.DrawEntry(() => entry.VideoClipReference, x => entry.VideoClipReference = x, changeColorIfChanged, () => unmodified?.VideoClipReference);
 			this.DrawEntry(() => entry.ModelReference, x => entry.ModelReference = x, changeColorIfChanged, () => unmodified?.ModelReference);
+			this.DrawEntry(() => entry.TextAssetReference, x => entry.TextAssetReference = x, changeColorIfChanged, () => unmodified?.TextAssetReference);
 		}
 	}
 }
