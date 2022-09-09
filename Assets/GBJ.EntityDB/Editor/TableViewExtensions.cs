@@ -20,7 +20,7 @@ namespace GBJ.EntityDB.Editor
             GUILayout.Box(string.Empty, style, GUILayout.Width(view.columnWidth));
         }
             
-        public static void DrawEntry<T>(this TableView<T> view, Getter<string> getter, Setter<string> setter, bool changeColorIfChanged = false, Getter<string?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<string> getter, Setter<string> setter, bool changeColorIfChanged = false, Getter<string?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = oldValue() == getter() ? Color.white : Color.cyan;
@@ -28,7 +28,7 @@ namespace GBJ.EntityDB.Editor
             setter(EditorGUILayout.TextField(getter(), GUILayout.Width(view.columnWidth)));
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<bool> getter, Setter<bool> setter, bool changeColorIfChanged = false, Getter<bool?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<bool> getter, Setter<bool> setter, bool changeColorIfChanged = false, Getter<bool?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = oldValue() == getter() ? Color.white : Color.cyan;
@@ -36,7 +36,7 @@ namespace GBJ.EntityDB.Editor
             setter(EditorGUILayout.Toggle(getter(), GUILayout.Width(view.columnWidth)));
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<int> getter, Setter<int> setter, bool changeColorIfChanged = false, Getter<int?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<int> getter, Setter<int> setter, bool changeColorIfChanged = false, Getter<int?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = oldValue() == getter() ? Color.white : Color.cyan;
@@ -44,7 +44,7 @@ namespace GBJ.EntityDB.Editor
             setter(EditorGUILayout.IntField(getter(), GUILayout.Width(view.columnWidth)));
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<float> getter, Setter<float> setter, bool changeColorIfChanged = false, Getter<float?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<float> getter, Setter<float> setter, bool changeColorIfChanged = false, Getter<float?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = oldValue() == null || Mathf.Approximately(oldValue().Value, getter()) ? Color.white : Color.cyan;
@@ -52,7 +52,7 @@ namespace GBJ.EntityDB.Editor
             setter(EditorGUILayout.FloatField(getter(), GUILayout.Width(view.columnWidth)));
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<int> getter, Setter<int> setter, Type enumType, bool changeColorIfChanged = false, Getter<int?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<int> getter, Setter<int> setter, Type enumType, bool changeColorIfChanged = false, Getter<int?> oldValue = null) where T : Entity
         {
             if (!enumType.IsEnum)
             {
@@ -65,7 +65,7 @@ namespace GBJ.EntityDB.Editor
             setter(EditorGUILayout.Popup(getter(), Enum.GetNames(enumType).Select(k => k.Replace("_", "/")).ToArray(), GUILayout.Width(view.columnWidth)));
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<AssetReferenceGameObjectHolder> getter, Setter<AssetReferenceGameObjectHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceGameObjectHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<AssetReferenceGameObjectHolder> getter, Setter<AssetReferenceGameObjectHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceGameObjectHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -101,7 +101,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<AssetReferenceSpriteHolder> getter, Setter<AssetReferenceSpriteHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceSpriteHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<AssetReferenceSpriteHolder> getter, Setter<AssetReferenceSpriteHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceSpriteHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -137,7 +137,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, Getter<AssetReferenceAtlasedSpriteHolder> getter, Setter<AssetReferenceAtlasedSpriteHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAtlasedSpriteHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<AssetReferenceAtlasedSpriteHolder> getter, Setter<AssetReferenceAtlasedSpriteHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAtlasedSpriteHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -173,7 +173,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<AssetReferenceAudioClipHolder> getter, Setter<AssetReferenceAudioClipHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAudioClipHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<AssetReferenceAudioClipHolder> getter, Setter<AssetReferenceAudioClipHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAudioClipHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -209,7 +209,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, Getter<GenericAssetReferenceHolder> getter, Setter<GenericAssetReferenceHolder> setter, bool changeColorIfChanged = false, Getter<GenericAssetReferenceHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, Getter<GenericAssetReferenceHolder> getter, Setter<GenericAssetReferenceHolder> setter, bool changeColorIfChanged = false, Getter<GenericAssetReferenceHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -245,7 +245,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTextureHolder> getter, Setter<AssetReferenceTextureHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTextureHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTextureHolder> getter, Setter<AssetReferenceTextureHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTextureHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -281,7 +281,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTexture2DHolder> getter, Setter<AssetReferenceTexture2DHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTexture2DHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTexture2DHolder> getter, Setter<AssetReferenceTexture2DHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTexture2DHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -317,7 +317,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTexture3DHolder> getter, Setter<AssetReferenceTexture3DHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTexture3DHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTexture3DHolder> getter, Setter<AssetReferenceTexture3DHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTexture3DHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -353,7 +353,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceSceneHolder> getter, Setter<AssetReferenceSceneHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceSceneHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceSceneHolder> getter, Setter<AssetReferenceSceneHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceSceneHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -389,7 +389,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceAnimationClipHolder> getter, Setter<AssetReferenceAnimationClipHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAnimationClipHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceAnimationClipHolder> getter, Setter<AssetReferenceAnimationClipHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAnimationClipHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -425,7 +425,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceAudioMixerHolder> getter, Setter<AssetReferenceAudioMixerHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAudioMixerHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceAudioMixerHolder> getter, Setter<AssetReferenceAudioMixerHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceAudioMixerHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -461,7 +461,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceComputeShaderHolder> getter, Setter<AssetReferenceComputeShaderHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceComputeShaderHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceComputeShaderHolder> getter, Setter<AssetReferenceComputeShaderHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceComputeShaderHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -497,7 +497,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceFontHolder> getter, Setter<AssetReferenceFontHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceFontHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceFontHolder> getter, Setter<AssetReferenceFontHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceFontHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -533,7 +533,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceGUISkinHolder> getter, Setter<AssetReferenceGUISkinHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceGUISkinHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceGUISkinHolder> getter, Setter<AssetReferenceGUISkinHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceGUISkinHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -569,7 +569,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceMaterialHolder> getter, Setter<AssetReferenceMaterialHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceMaterialHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceMaterialHolder> getter, Setter<AssetReferenceMaterialHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceMaterialHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -605,7 +605,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceMeshHolder> getter, Setter<AssetReferenceMeshHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceMeshHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceMeshHolder> getter, Setter<AssetReferenceMeshHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceMeshHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -641,7 +641,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferencePhysicMaterialHolder> getter, Setter<AssetReferencePhysicMaterialHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferencePhysicMaterialHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferencePhysicMaterialHolder> getter, Setter<AssetReferencePhysicMaterialHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferencePhysicMaterialHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -677,7 +677,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
 
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceShaderHolder> getter, Setter<AssetReferenceShaderHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceShaderHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceShaderHolder> getter, Setter<AssetReferenceShaderHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceShaderHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -713,7 +713,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceVideoClipHolder> getter, Setter<AssetReferenceVideoClipHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceVideoClipHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceVideoClipHolder> getter, Setter<AssetReferenceVideoClipHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceVideoClipHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -749,7 +749,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceModelHolder> getter, Setter<AssetReferenceModelHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceModelHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceModelHolder> getter, Setter<AssetReferenceModelHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceModelHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;
@@ -785,7 +785,7 @@ namespace GBJ.EntityDB.Editor
             }
         }
         
-        public static void DrawEntry<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTextAssetHolder> getter, Setter<AssetReferenceTextAssetHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTextAssetHolder?> oldValue = null) where T : Entity
+        public static void DrawCell<T>(this TableView<T> view, [CanBeNull] Getter<AssetReferenceTextAssetHolder> getter, Setter<AssetReferenceTextAssetHolder> setter, bool changeColorIfChanged = false, Getter<AssetReferenceTextAssetHolder?> oldValue = null) where T : Entity
         {
             if (changeColorIfChanged && oldValue != null)
                 GUI.color = (getter() == null && oldValue() == null) || getter().Equals(oldValue()) ? Color.white : Color.cyan;

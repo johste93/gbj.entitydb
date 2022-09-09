@@ -14,7 +14,7 @@ namespace GBJ.EntityDB.Editor
 {
     public static class TableViewListExtensions
     {
-        public static void DrawList<T>(this TableView<T> view, Getter<List<string>> getter, Setter<List<string>> setter, bool changeColorIfChanged = false, Getter<List<string>?> oldValue = null) where T : Entity
+        public static void DrawCellList<T>(this TableView<T> view, Getter<List<string>> getter, Setter<List<string>> setter, bool changeColorIfChanged = false, Getter<List<string>?> oldValue = null) where T : Entity
         {
             List<string> list = getter();
             List<string> oldList = oldValue();
@@ -44,7 +44,7 @@ namespace GBJ.EntityDB.Editor
             setter(list);
         }
         
-        public static void DrawList<T>(this TableView<T> view, Getter<List<bool>> getter, Setter<List<bool>> setter, bool changeColorIfChanged = false, Getter<List<bool>?> oldValue = null) where T : Entity
+        public static void DrawCellList<T>(this TableView<T> view, Getter<List<bool>> getter, Setter<List<bool>> setter, bool changeColorIfChanged = false, Getter<List<bool>?> oldValue = null) where T : Entity
         {
             List<bool> list = getter();
             List<bool> oldList = oldValue();
@@ -74,7 +74,7 @@ namespace GBJ.EntityDB.Editor
             setter(list);
         }
         
-        public static void DrawList<T>(this TableView<T> view, Getter<List<int>> getter, Setter<List<int>> setter, bool changeColorIfChanged = false, Getter<List<int>?> oldValue = null) where T : Entity
+        public static void DrawCellList<T>(this TableView<T> view, Getter<List<int>> getter, Setter<List<int>> setter, bool changeColorIfChanged = false, Getter<List<int>?> oldValue = null) where T : Entity
         {
             List<int> list = getter();
             List<int> oldList = oldValue();
@@ -104,7 +104,7 @@ namespace GBJ.EntityDB.Editor
             setter(list);
         }
         
-        public static void DrawList<T>(this TableView<T> view, Getter<List<float>> getter, Setter<List<float>> setter, bool changeColorIfChanged = false, Getter<List<float>?> oldValue = null) where T : Entity
+        public static void DrawCellList<T>(this TableView<T> view, Getter<List<float>> getter, Setter<List<float>> setter, bool changeColorIfChanged = false, Getter<List<float>?> oldValue = null) where T : Entity
         {
             List<float> list = getter();
             List<float> oldList = oldValue();
@@ -134,7 +134,7 @@ namespace GBJ.EntityDB.Editor
             setter(list);
         }
         
-        public static void DrawList<T, TEnum>(this TableView<T> view, Getter<List<TEnum>> getter, Setter<List<TEnum>> setter, Type enumType, bool changeColorIfChanged = false, Getter<List<TEnum>?> oldValue = null) where T : Entity where TEnum : Enum 
+        public static void DrawCellList<T, TEnum>(this TableView<T> view, Getter<List<TEnum>> getter, Setter<List<TEnum>> setter, Type enumType, bool changeColorIfChanged = false, Getter<List<TEnum>?> oldValue = null) where T : Entity where TEnum : Enum 
         {
             if (!enumType.IsEnum)
             {

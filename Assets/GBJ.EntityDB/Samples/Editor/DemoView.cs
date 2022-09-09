@@ -52,37 +52,37 @@ namespace GBJ.EntityDB
 
 		protected override void DrawRow(DemoEntity entry, DemoEntity unmodified, bool changeColorIfChanged = false)
 		{
-			this.DrawEntry(() => entry.StringValue, x => entry.StringValue = x, changeColorIfChanged, () => unmodified?.StringValue);
-			this.DrawEntry(() => entry.IntValue, x => entry.IntValue = x, changeColorIfChanged, () => unmodified?.IntValue);
-			this.DrawEntry(() => entry.FloatValue, x => entry.FloatValue = x, changeColorIfChanged, () => unmodified?.FloatValue);
-			this.DrawEntry(() => entry.BoolValue, x => entry.BoolValue = x, changeColorIfChanged, () => unmodified?.BoolValue);
-			this.DrawEntry(() => (int) entry.EnumValue, x => entry.EnumValue = (StringComparison) x, typeof(StringComparison), changeColorIfChanged, () => (int?) unmodified?.EnumValue);
-			this.DrawEntry(() => entry.GenericAssetReference, x => entry.GenericAssetReference = x, changeColorIfChanged, () => unmodified?.GenericAssetReference);
-			this.DrawEntry(() => entry.GameObjectReference, x => entry.GameObjectReference = x, changeColorIfChanged, () => unmodified?.GameObjectReference);
-			this.DrawEntry(() => entry.SpriteReference, x => entry.SpriteReference = x, changeColorIfChanged, () => unmodified?.SpriteReference);
-			this.DrawEntry(() => entry.AtlasedSpriteReference, x => entry.AtlasedSpriteReference = x, changeColorIfChanged, () => unmodified?.AtlasedSpriteReference);
-			this.DrawEntry(() => entry.AudioClipReference, x => entry.AudioClipReference = x, changeColorIfChanged, () => unmodified?.AudioClipReference);
-			this.DrawEntry(() => entry.TextureReference, x => entry.TextureReference = x, changeColorIfChanged, () => unmodified?.TextureReference);
-			this.DrawEntry(() => entry.Texture2DReference, x => entry.Texture2DReference = x, changeColorIfChanged, () => unmodified?.Texture2DReference);
-			this.DrawEntry(() => entry.Texture3DReference, x => entry.Texture3DReference = x, changeColorIfChanged, () => unmodified?.Texture3DReference);
-			this.DrawEntry(() => entry.SceneReference, x => entry.SceneReference = x, changeColorIfChanged, () => unmodified?.SceneReference);
-			this.DrawEntry(() => entry.AnimationClipReference, x => entry.AnimationClipReference = x, changeColorIfChanged, () => unmodified?.AnimationClipReference);
-			this.DrawEntry(() => entry.AudioMixerReference, x => entry.AudioMixerReference = x, changeColorIfChanged, () => unmodified?.AudioMixerReference);
-			this.DrawEntry(() => entry.ComputeShaderReference, x => entry.ComputeShaderReference = x, changeColorIfChanged, () => unmodified?.ComputeShaderReference);
-			this.DrawEntry(() => entry.FontReference, x => entry.FontReference = x, changeColorIfChanged, () => unmodified?.FontReference);
-			this.DrawEntry(() => entry.GUISkinReference, x => entry.GUISkinReference = x, changeColorIfChanged, () => unmodified?.GUISkinReference);
-			this.DrawEntry(() => entry.MaterialReference, x => entry.MaterialReference = x, changeColorIfChanged, () => unmodified?.MaterialReference);
-			this.DrawEntry(() => entry.MeshReference, x => entry.MeshReference = x, changeColorIfChanged, () => unmodified?.MeshReference);
-			this.DrawEntry(() => entry.PhysicMaterialReference, x => entry.PhysicMaterialReference = x, changeColorIfChanged, () => unmodified?.PhysicMaterialReference);
-			this.DrawEntry(() => entry.ShaderReference, x => entry.ShaderReference = x, changeColorIfChanged, () => unmodified?.ShaderReference);
-			this.DrawEntry(() => entry.VideoClipReference, x => entry.VideoClipReference = x, changeColorIfChanged, () => unmodified?.VideoClipReference);
-			this.DrawEntry(() => entry.ModelReference, x => entry.ModelReference = x, changeColorIfChanged, () => unmodified?.ModelReference);
-			this.DrawEntry(() => entry.TextAssetReference, x => entry.TextAssetReference = x, changeColorIfChanged, () => unmodified?.TextAssetReference);
-			this.DrawList(() => entry.Strings, x => entry.Strings = x, changeColorIfChanged, () => unmodified?.Strings);
-			this.DrawList(() => entry.Ints, x => entry.Ints = x, changeColorIfChanged, () => unmodified?.Ints);
-			this.DrawList(() => entry.Floats, x => entry.Floats = x, changeColorIfChanged, () => unmodified?.Floats);
-			this.DrawList(() => entry.Bools, x => entry.Bools = x, changeColorIfChanged, () => unmodified?.Bools);
-			this.DrawList(() => entry.Enums, x => entry.Enums = x, typeof(StringComparison), changeColorIfChanged, () => unmodified?.Enums);
+			this.DrawCell(() => entry.StringValue, x => entry.StringValue = x, changeColorIfChanged, () => unmodified?.StringValue);
+			this.DrawCell(() => entry.IntValue, x => entry.IntValue = x, changeColorIfChanged, () => unmodified?.IntValue);
+			this.DrawCell(() => entry.FloatValue, x => entry.FloatValue = x, changeColorIfChanged, () => unmodified?.FloatValue);
+			this.DrawCell(() => entry.BoolValue, x => entry.BoolValue = x, changeColorIfChanged, () => unmodified?.BoolValue);
+			this.DrawCell(() => (int) entry.EnumValue, x => entry.EnumValue = (StringComparison) x, typeof(StringComparison), changeColorIfChanged, () => (int?) unmodified?.EnumValue);
+			this.DrawCell(() => entry.GenericAssetReference, x => entry.GenericAssetReference = x, changeColorIfChanged, () => unmodified?.GenericAssetReference);
+			this.DrawCell(() => entry.GameObjectReference, x => entry.GameObjectReference = x, changeColorIfChanged, () => unmodified?.GameObjectReference);
+			this.DrawCell(() => entry.SpriteReference, x => entry.SpriteReference = x, changeColorIfChanged, () => unmodified?.SpriteReference);
+			this.DrawCell(() => entry.AtlasedSpriteReference, x => entry.AtlasedSpriteReference = x, changeColorIfChanged, () => unmodified?.AtlasedSpriteReference);
+			this.DrawCell(() => entry.AudioClipReference, x => entry.AudioClipReference = x, changeColorIfChanged, () => unmodified?.AudioClipReference);
+			this.DrawCell(() => entry.TextureReference, x => entry.TextureReference = x, changeColorIfChanged, () => unmodified?.TextureReference);
+			this.DrawCell(() => entry.Texture2DReference, x => entry.Texture2DReference = x, changeColorIfChanged, () => unmodified?.Texture2DReference);
+			this.DrawCell(() => entry.Texture3DReference, x => entry.Texture3DReference = x, changeColorIfChanged, () => unmodified?.Texture3DReference);
+			this.DrawCell(() => entry.SceneReference, x => entry.SceneReference = x, changeColorIfChanged, () => unmodified?.SceneReference);
+			this.DrawCell(() => entry.AnimationClipReference, x => entry.AnimationClipReference = x, changeColorIfChanged, () => unmodified?.AnimationClipReference);
+			this.DrawCell(() => entry.AudioMixerReference, x => entry.AudioMixerReference = x, changeColorIfChanged, () => unmodified?.AudioMixerReference);
+			this.DrawCell(() => entry.ComputeShaderReference, x => entry.ComputeShaderReference = x, changeColorIfChanged, () => unmodified?.ComputeShaderReference);
+			this.DrawCell(() => entry.FontReference, x => entry.FontReference = x, changeColorIfChanged, () => unmodified?.FontReference);
+			this.DrawCell(() => entry.GUISkinReference, x => entry.GUISkinReference = x, changeColorIfChanged, () => unmodified?.GUISkinReference);
+			this.DrawCell(() => entry.MaterialReference, x => entry.MaterialReference = x, changeColorIfChanged, () => unmodified?.MaterialReference);
+			this.DrawCell(() => entry.MeshReference, x => entry.MeshReference = x, changeColorIfChanged, () => unmodified?.MeshReference);
+			this.DrawCell(() => entry.PhysicMaterialReference, x => entry.PhysicMaterialReference = x, changeColorIfChanged, () => unmodified?.PhysicMaterialReference);
+			this.DrawCell(() => entry.ShaderReference, x => entry.ShaderReference = x, changeColorIfChanged, () => unmodified?.ShaderReference);
+			this.DrawCell(() => entry.VideoClipReference, x => entry.VideoClipReference = x, changeColorIfChanged, () => unmodified?.VideoClipReference);
+			this.DrawCell(() => entry.ModelReference, x => entry.ModelReference = x, changeColorIfChanged, () => unmodified?.ModelReference);
+			this.DrawCell(() => entry.TextAssetReference, x => entry.TextAssetReference = x, changeColorIfChanged, () => unmodified?.TextAssetReference);
+			this.DrawCellList(() => entry.Strings, x => entry.Strings = x, changeColorIfChanged, () => unmodified?.Strings);
+			this.DrawCellList(() => entry.Ints, x => entry.Ints = x, changeColorIfChanged, () => unmodified?.Ints);
+			this.DrawCellList(() => entry.Floats, x => entry.Floats = x, changeColorIfChanged, () => unmodified?.Floats);
+			this.DrawCellList(() => entry.Bools, x => entry.Bools = x, changeColorIfChanged, () => unmodified?.Bools);
+			this.DrawCellList(() => entry.Enums, x => entry.Enums = x, typeof(StringComparison), changeColorIfChanged, () => unmodified?.Enums);
 		}
 	}
 }

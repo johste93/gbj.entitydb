@@ -9,20 +9,22 @@ public class PersonTableView : TableView<PersonEntity>
     protected override bool GenerateConstants => true;
     protected override string GetPropertyConstantName(PersonEntity entity) => entity.Name;
 
-    protected override int maxColumnCount => 3;
+    protected override int maxColumnCount => 4;
     protected override void CreateNewEntry() => @new = new PersonEntity();
 
     protected override void DrawColumnNames()
     {
         DrawColumn("Name", x => x.Value.Name);
         DrawColumn("Age", x => x.Value.Age);
+        DrawColumn("Friend", x => x.Value.Friend);
         DrawColumn("Prefab", x => x.Value.Prefab);
     }
 
     protected override void DrawRow(PersonEntity entry, PersonEntity unmodified, bool changeColorIfChanged = false)
     {
-        this.DrawEntry(() => entry.Name, x => entry.Name = x, changeColorIfChanged, () => unmodified?.Name);
-        this.DrawEntry(() => entry.Age, x => entry.Age = x, changeColorIfChanged, () => unmodified?.Age);
-        this.DrawEntry(() => entry.Prefab, x => entry.Prefab = x, changeColorIfChanged, () => unmodified?.Prefab);
+        this.DrawCell(() => entry.Name, x => entry.Name = x, changeColorIfChanged, () => unmodified?.Name);
+        this.DrawCell(() => entry.Age, x => entry.Age = x, changeColorIfChanged, () => unmodified?.Age);
+        this.DrawDropdown(typeof(Person), () => entry.Friend, x => entry.Friend = x, changeColorIfChanged, () => unmodified?.Friend);
+        this.DrawCell(() => entry.Prefab, x => entry.Prefab = x, changeColorIfChanged, () => unmodified?.Prefab);
     }
 }
