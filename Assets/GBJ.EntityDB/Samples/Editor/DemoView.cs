@@ -12,7 +12,7 @@ namespace GBJ.EntityDB
 		[MenuItem("Tables/Demo")]
 		static void Init() => Init<DemoView>();
 
-		protected override int maxColumnCount => 26;
+		protected override int maxColumnCount => 30;
 		protected override void CreateNewEntry() => @new = new DemoEntity();
 
 		protected override void DrawColumnNames()
@@ -43,6 +43,11 @@ namespace GBJ.EntityDB
 			DrawColumn("VideoClip", x => x.Value.VideoClipReference);
 			DrawColumn("Model", x => x.Value.ModelReference);
 			DrawColumn("Text Asset", x => x.Value.TextAssetReference);
+			DrawColumn("Strings", x => x.Value.Strings);
+			DrawColumn("Ints", x => x.Value.Ints);
+			DrawColumn("Floats", x => x.Value.Floats);
+			DrawColumn("Bools", x => x.Value.Bools);
+			DrawColumn("Enums", x => x.Value.Enums);
 		}
 
 		protected override void DrawRow(DemoEntity entry, DemoEntity unmodified, bool changeColorIfChanged = false)
@@ -73,6 +78,11 @@ namespace GBJ.EntityDB
 			this.DrawEntry(() => entry.VideoClipReference, x => entry.VideoClipReference = x, changeColorIfChanged, () => unmodified?.VideoClipReference);
 			this.DrawEntry(() => entry.ModelReference, x => entry.ModelReference = x, changeColorIfChanged, () => unmodified?.ModelReference);
 			this.DrawEntry(() => entry.TextAssetReference, x => entry.TextAssetReference = x, changeColorIfChanged, () => unmodified?.TextAssetReference);
+			this.DrawList(() => entry.Strings, x => entry.Strings = x, changeColorIfChanged, () => unmodified?.Strings);
+			this.DrawList(() => entry.Ints, x => entry.Ints = x, changeColorIfChanged, () => unmodified?.Ints);
+			this.DrawList(() => entry.Floats, x => entry.Floats = x, changeColorIfChanged, () => unmodified?.Floats);
+			this.DrawList(() => entry.Bools, x => entry.Bools = x, changeColorIfChanged, () => unmodified?.Bools);
+			this.DrawList(() => entry.Enums, x => entry.Enums = x, typeof(StringComparison), changeColorIfChanged, () => unmodified?.Enums);
 		}
 	}
 }

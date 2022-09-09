@@ -25,6 +25,7 @@ namespace GBJ.EntityDB.Editor
         protected string sortingColumn;
 
         protected Vector2 scrollPosition;
+        protected Vector2 mousePos;
         protected int selectedRow;
 
         private int pageIndex = 0;
@@ -67,22 +68,26 @@ namespace GBJ.EntityDB.Editor
             RefreshDictionary();
         }
 
+        protected virtual void Update()
+        {
+            if (!safeAreaContainsMouse)
+                return;
+            
+            Repaint();
+        }
+
+        private bool safeAreaContainsMouse;
+        
         protected virtual void OnGUI()
         {
-            Vector2 mousePos = Event.current.mousePosition;
-            mousePos.y += scrollPosition.y - EditorGUIUtility.standardVerticalSpacing;
-
-            selectedRow = Mathf.FloorToInt(mousePos.y / TableViewStyles.lineHeight);
+            safeAreaContainsMouse = Screen.safeArea.Contains(Event.current.mousePosition);
+            
             float totalColumnWidth = position.width - TableViewStyles.rightMargin - TableViewStyles.leftMargin - (TableViewStyles.standardHorizontalSpacing * horizontalColumnCount) - (TableViewStyles.standardHorizontalSpacing * 3) - 1 - TableViewStyles.scrollBarWidth;
             columnWidth = totalColumnWidth / horizontalColumnCount;
             
-            int rowsVisibleOnScreen = tableDictionary.Count;
+            mousePos = Event.current.mousePosition;
+            mousePos.y += scrollPosition.y - TableViewStyles.lineHeight;
 
-            if (selectedRow > 0 && selectedRow <= rowsVisibleOnScreen)
-            {
-                GUI.DrawTexture(new Rect(new Vector2(0, (selectedRow * TableViewStyles.lineHeight) - scrollPosition.y + (EditorGUIUtility.standardVerticalSpacing * 0.5f)), new Vector2(position.width, TableViewStyles.lineHeight)), Texture2D.whiteTexture);
-            }
-            
             GUILayout.Space(TableViewStyles.lineHeight);
             
             scrollPosition = GUILayout.BeginScrollView(scrollPosition);
@@ -103,7 +108,16 @@ namespace GBJ.EntityDB.Editor
             for (int i = startIndex; i < Mathf.Min(startIndex + entitiesPrPage, tableDictionary.Count); i++)
             {
                 var entry = tableDictionary.ElementAt(i);
-                EditorGUILayout.BeginHorizontal();
+                var rect = EditorGUILayout.BeginHorizontal();
+                rect.height += EditorGUIUtility.standardVerticalSpacing;
+                rect.y -= (EditorGUIUtility.standardVerticalSpacing * 0.5f);
+                
+                Color color = rect.Contains(mousePos) ? Color.white : (i % 2 == 0 ? Color.clear: TableViewStyles.alternateRowColor);
+                
+                GUI.color = color;
+                GUI.DrawTexture(rect, Texture2D.whiteTexture);
+                GUI.color = Color.white;
+                
                 if (GUILayout.Button("Copy", GUILayout.Width(TableViewStyles.leftMargin)))
                 {
                     EditorGUIUtility.systemCopyBuffer = entry.Key;

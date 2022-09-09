@@ -16,7 +16,9 @@ namespace GBJ.EntityDB.Editor
 
         internal static Color editorLightBackgroundColor = new Color(0.2196078f, 0.2196078f, 0.2196078f, 1);
         internal static Color editorBackgroundColor = new Color(0.16470588235f, 0.16470588235f, 0.16470588235f, 1);
-        
+        internal static Color alternateRowColor = new Color(1f, 1f, 1f, 0.025f);
+  
+
         private static GUIStyle _centeredLabelStyle;
         internal static GUIStyle centeredLabelStyle
         {

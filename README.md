@@ -124,6 +124,11 @@ int
 float
 bool
 enum
+List<string>
+List<int>
+List<float>
+List<bool>
+List<enum>
 ```
 
 ### Asset References:

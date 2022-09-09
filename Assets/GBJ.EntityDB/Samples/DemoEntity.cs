@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using GBJ.EntityDB;
 using GBJ.EntityDB.AssetReferenceHolders;
 using Newtonsoft.Json;
@@ -10,6 +11,12 @@ public class DemoEntity : Entity
 	public float FloatValue;
 	public bool BoolValue;
 	public StringComparison EnumValue;
+	
+	public List<int> Ints = new List<int>();
+	public List<float> Floats = new List<float>();
+	public List<bool> Bools = new List<bool>();
+	public List<string> Strings = new List<string>();
+	public List<StringComparison> Enums = new List<StringComparison>();
 	
 	[JsonConverter(typeof(AssetReferenceHolderConverter<GenericAssetReferenceHolder>))]
 	public GenericAssetReferenceHolder GenericAssetReference = new GenericAssetReferenceHolder();
