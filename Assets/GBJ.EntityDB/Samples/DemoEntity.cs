@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 public class DemoEntity : Entity
 {
 	public string StringValue;
+	public string StringValue2;
 	public int IntValue;
 	public float FloatValue;
 	public bool BoolValue;

@@ -12,12 +12,13 @@ namespace GBJ.EntityDB
 		[MenuItem("Tables/Demo")]
 		static void Init() => Init<DemoView>();
 
-		protected override int maxColumnCount => 30;
+		protected override int maxColumnCount => 32;
 		protected override void CreateNewEntry() => @new = new DemoEntity();
 
 		protected override void DrawColumnNames()
 		{
 			DrawColumn("String", x => x.Value.StringValue);
+			DrawColumn("Text Area", x => x.Value.StringValue2);
 			DrawColumn("Int", x => x.Value.IntValue);
 			DrawColumn("Float", x => x.Value.FloatValue);
 			DrawColumn("Bool", x => x.Value.BoolValue);
@@ -53,6 +54,7 @@ namespace GBJ.EntityDB
 		protected override void DrawRow(DemoEntity entry, DemoEntity unmodified, bool changeColorIfChanged = false)
 		{
 			this.DrawCell(() => entry.StringValue, x => entry.StringValue = x, changeColorIfChanged, () => unmodified?.StringValue);
+			this.DrawTextAreaCell(() => entry.StringValue2, x => entry.StringValue2 = x, changeColorIfChanged, () => unmodified?.StringValue2);
 			this.DrawCell(() => entry.IntValue, x => entry.IntValue = x, changeColorIfChanged, () => unmodified?.IntValue);
 			this.DrawCell(() => entry.FloatValue, x => entry.FloatValue = x, changeColorIfChanged, () => unmodified?.FloatValue);
 			this.DrawCell(() => entry.BoolValue, x => entry.BoolValue = x, changeColorIfChanged, () => unmodified?.BoolValue);

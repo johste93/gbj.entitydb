@@ -27,6 +27,14 @@ namespace GBJ.EntityDB.Editor
 
             setter(EditorGUILayout.TextField(getter(), GUILayout.Width(view.columnWidth)));
         }
+        
+        public static void DrawTextAreaCell<T>(this TableView<T> view, Getter<string> getter, Setter<string> setter, bool changeColorIfChanged = false, Getter<string?> oldValue = null) where T : Entity
+        {
+            if (changeColorIfChanged && oldValue != null)
+                GUI.color = oldValue() == getter() ? Color.white : Color.cyan;
+
+            setter(EditorGUILayout.TextArea(getter(), GUILayout.Width(view.columnWidth)));
+        }
 
         public static void DrawCell<T>(this TableView<T> view, Getter<bool> getter, Setter<bool> setter, bool changeColorIfChanged = false, Getter<bool?> oldValue = null) where T : Entity
         {

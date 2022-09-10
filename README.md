@@ -187,12 +187,14 @@ A: Before an asset can be assigned it must first be marked as addressable.
 ### Improvement areas:
 
 > Reduce code repetition: Addressable Assets Property fields are very difficult to render in custom editor windows. 
-Because of this the project has a lot boilerplate code repetition than I'm comfortable with. 
+Because of this the project has more WET code than I'm comfortable with. 
 
 > Make it easier to change where tables and constants are saved.
 
 > Autogenerate TableViews
 
 > Backport to older Unity versions.
+
+> Add support for lists of Asset References.
 
 PR's are welcome.
