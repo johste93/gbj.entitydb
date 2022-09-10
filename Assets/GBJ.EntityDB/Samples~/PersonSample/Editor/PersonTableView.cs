@@ -7,6 +7,7 @@ public class PersonTableView : TableView<PersonEntity>
     static void Init() => Init<PersonTableView>();
     
     protected override bool GenerateConstants => true;
+    protected override string ConstantPath => @"GBJ.EntityDB/Samples/PersonSample/";
     protected override string GetPropertyConstantName(PersonEntity entity) => entity.Name;
 
     protected override int maxColumnCount => 5;

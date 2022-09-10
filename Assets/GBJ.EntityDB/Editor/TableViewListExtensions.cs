@@ -26,10 +26,10 @@ namespace GBJ.EntityDB.Editor
                     GUI.color = oldList != null && i < oldList.Count && list[i].Equals(oldList[i]) ? Color.white : Color.cyan;
 
                 GUILayout.BeginHorizontal();
-                list[i] = EditorGUILayout.TextField(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.standardHorizontalSpacing - TableViewStyles.rightMargin - 0.5f));
+                list[i] = EditorGUILayout.TextField(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.StandardHorizontalSpacing - TableViewStyles.RightMargin - 0.5f));
 
                 GUI.color = Color.white;
-                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.rightMargin)))
+                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.RightMargin)))
                     list.RemoveAt(i);
 
                 GUILayout.EndHorizontal();
@@ -56,10 +56,10 @@ namespace GBJ.EntityDB.Editor
                     GUI.color = oldList != null && i < oldList.Count && list[i].Equals(oldList[i]) ? Color.white : Color.cyan;
 
                 GUILayout.BeginHorizontal();
-                list[i] = EditorGUILayout.Toggle(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.standardHorizontalSpacing - TableViewStyles.rightMargin - 0.5f));
+                list[i] = EditorGUILayout.Toggle(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.StandardHorizontalSpacing - TableViewStyles.RightMargin - 0.5f));
 
                 GUI.color = Color.white;
-                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.rightMargin)))
+                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.RightMargin)))
                     list.RemoveAt(i);
 
                 GUILayout.EndHorizontal();
@@ -86,10 +86,10 @@ namespace GBJ.EntityDB.Editor
                     GUI.color = oldList != null && i < oldList.Count && list[i].Equals(oldList[i]) ? Color.white : Color.cyan;
 
                 GUILayout.BeginHorizontal();
-                list[i] = EditorGUILayout.IntField(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.standardHorizontalSpacing - TableViewStyles.rightMargin - 0.5f));
+                list[i] = EditorGUILayout.IntField(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.StandardHorizontalSpacing - TableViewStyles.RightMargin - 0.5f));
 
                 GUI.color = Color.white;
-                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.rightMargin)))
+                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.RightMargin)))
                     list.RemoveAt(i);
 
                 GUILayout.EndHorizontal();
@@ -116,10 +116,10 @@ namespace GBJ.EntityDB.Editor
                     GUI.color = oldList != null && i < oldList.Count && list[i].Equals(oldList[i]) ? Color.white : Color.cyan;
 
                 GUILayout.BeginHorizontal();
-                list[i] = EditorGUILayout.FloatField(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.standardHorizontalSpacing - TableViewStyles.rightMargin - 0.5f));
+                list[i] = EditorGUILayout.FloatField(list[i], GUILayout.Width(view.columnWidth - TableViewStyles.StandardHorizontalSpacing - TableViewStyles.RightMargin - 0.5f));
 
                 GUI.color = Color.white;
-                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.rightMargin)))
+                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.RightMargin)))
                     list.RemoveAt(i);
 
                 GUILayout.EndHorizontal();
@@ -151,10 +151,10 @@ namespace GBJ.EntityDB.Editor
                     GUI.color = oldList != null && i < oldList.Count && list[i].Equals(oldList[i]) ? Color.white : Color.cyan;
 
                 GUILayout.BeginHorizontal();
-                list[i] = EditorGUILayout.Popup(list[i] , Enum.GetNames(enumType), GUILayout.Width(view.columnWidth - TableViewStyles.standardHorizontalSpacing - TableViewStyles.rightMargin - 0.5f));
+                list[i] = EditorGUILayout.Popup(list[i] , Enum.GetNames(enumType), GUILayout.Width(view.columnWidth - TableViewStyles.StandardHorizontalSpacing - TableViewStyles.RightMargin - 0.5f));
 
                 GUI.color = Color.white;
-                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.rightMargin)))
+                if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.RightMargin)))
                     list.RemoveAt(i);
 
                 GUILayout.EndHorizontal();

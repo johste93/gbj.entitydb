@@ -39,9 +39,9 @@ namespace GBJ.EntityDB.Editor
 	        for (int i = 0; i < list.Count; i++)
 	        {
 		        GUILayout.BeginHorizontal();
-		        view.DrawConstantDropdown(type, () => list[i], x => list[i] = x, changeColorIfChanged, () => i >= oldList.Count ? string.Empty : oldList[i], GUILayout.MaxWidth(view.columnWidth - TableViewStyles.standardHorizontalSpacing - TableViewStyles.rightMargin - 0.5f));
+		        view.DrawConstantDropdown(type, () => list[i], x => list[i] = x, changeColorIfChanged, () => oldList == null || i >= oldList.Count ? string.Empty : oldList[i], GUILayout.MaxWidth(view.columnWidth - TableViewStyles.StandardHorizontalSpacing - TableViewStyles.RightMargin - 0.5f));
 	            
-	            if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.rightMargin)))
+	            if (GUILayout.Button("-", GUILayout.Width(TableViewStyles.RightMargin)))
 	                list.RemoveAt(i);
 
 	            GUILayout.EndHorizontal();

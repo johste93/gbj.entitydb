@@ -189,7 +189,7 @@ A: Before an asset can be assigned it must first be marked as addressable.
 > Reduce code repetition: Addressable Assets Property fields are very difficult to render in custom editor windows. 
 Because of this the project has more WET code than I'm comfortable with. 
 
-> Make it easier to change where tables and constants are saved.
+> Make it easier to change where tables are saved.
 
 > Autogenerate TableViews
 

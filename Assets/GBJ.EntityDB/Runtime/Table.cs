@@ -49,7 +49,6 @@ namespace GBJ.EntityDB
 
 		public virtual void Load()
 		{
-			Debug.Log($"Loading: {AssetName()}");
 			if (Exists())
 			{
 				int index = 0;

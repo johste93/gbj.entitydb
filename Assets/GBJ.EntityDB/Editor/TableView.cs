@@ -16,6 +16,7 @@ namespace GBJ.EntityDB.Editor
         protected T @new;
 
         protected virtual bool GenerateConstants => false;
+        protected virtual string ConstantPath => $"Constants/";
         protected virtual string GetPropertyConstantName(T entity) => string.Empty;
 
         protected abstract int maxColumnCount { get; }
@@ -82,13 +83,13 @@ namespace GBJ.EntityDB.Editor
         {
             safeAreaContainsMouse = Screen.safeArea.Contains(Event.current.mousePosition);
             
-            float totalColumnWidth = position.width - TableViewStyles.rightMargin - TableViewStyles.leftMargin - (TableViewStyles.standardHorizontalSpacing * horizontalColumnCount) - (TableViewStyles.standardHorizontalSpacing * 3) - 1 - TableViewStyles.scrollBarWidth;
+            float totalColumnWidth = position.width - TableViewStyles.RightMargin - TableViewStyles.LeftMargin - (TableViewStyles.StandardHorizontalSpacing * horizontalColumnCount) - (TableViewStyles.StandardHorizontalSpacing * 3) - 1 - TableViewStyles.ScrollBarWidth;
             columnWidth = totalColumnWidth / horizontalColumnCount;
             
             mousePos = Event.current.mousePosition;
-            mousePos.y += scrollPosition.y - TableViewStyles.lineHeight;
+            mousePos.y += scrollPosition.y - TableViewStyles.LineHeight;
 
-            GUILayout.Space(TableViewStyles.lineHeight);
+            GUILayout.Space(TableViewStyles.LineHeight);
             
             scrollPosition = GUILayout.BeginScrollView(scrollPosition);
             EditorGUILayout.BeginHorizontal();
@@ -112,13 +113,13 @@ namespace GBJ.EntityDB.Editor
                 rect.height += EditorGUIUtility.standardVerticalSpacing;
                 rect.y -= (EditorGUIUtility.standardVerticalSpacing * 0.5f);
                 
-                Color color = rect.Contains(mousePos) ? Color.white : (i % 2 == 0 ? Color.clear: TableViewStyles.alternateRowColor);
+                Color color = rect.Contains(mousePos) ? TableViewStyles.HighlightRowColor : (i % 2 == 0 ? Color.clear: TableViewStyles.AlternateRowColor);
                 
                 GUI.color = color;
                 GUI.DrawTexture(rect, Texture2D.whiteTexture);
                 GUI.color = Color.white;
                 
-                if (GUILayout.Button("Copy", GUILayout.Width(TableViewStyles.leftMargin)))
+                if (GUILayout.Button("Copy", GUILayout.Width(TableViewStyles.LeftMargin)))
                 {
                     EditorGUIUtility.systemCopyBuffer = entry.Key;
                     Debug.Log($"{entry.Key} copied to clipboard");
@@ -127,7 +128,7 @@ namespace GBJ.EntityDB.Editor
                 DrawRow(entry.Value, UnmodifiedTable.GetById(((Entity) entry.Value).Id), true);
 
                 GUI.color = Color.red;
-                if (GUILayout.Button("X", GUILayout.Width(TableViewStyles.rightMargin)))
+                if (GUILayout.Button("X", GUILayout.Width(TableViewStyles.RightMargin)))
                 {
                     Table.Remove(entry.Value);
                     RefreshDictionary();
@@ -142,10 +143,10 @@ namespace GBJ.EntityDB.Editor
 
         protected void DrawNewEntry()
         {
-            GUILayout.Space(TableViewStyles.lineHeight);
+            GUILayout.Space(TableViewStyles.LineHeight);
             EditorGUILayout.BeginHorizontal();
             GUI.color = Color.green;
-            if (GUILayout.Button("+", GUILayout.Width(TableViewStyles.leftMargin), GUILayout.Height(18)))
+            if (GUILayout.Button("+", GUILayout.Width(TableViewStyles.LeftMargin), GUILayout.Height(18)))
             {
                 Table.Insert(@new);
                 RefreshDictionary();
@@ -160,7 +161,7 @@ namespace GBJ.EntityDB.Editor
 
         private bool DrawSortingColumnButton(float xPos, string label, float width)
         {
-            Rect rect = new Rect(xPos, 0, width, TableViewStyles.lineHeight);
+            Rect rect = new Rect(xPos, 0, width, TableViewStyles.LineHeight);
             bool clicked = GUI.Button(rect, sortingColumn == label ? $"{label} {(@descending ? "↓" : "↑")}" : label);
             if (clicked)
             {
@@ -175,10 +176,10 @@ namespace GBJ.EntityDB.Editor
         private float columnXPos;
         protected void DrawHeader()
         {
-            DrawBackground(0, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorLightBackgroundColor);
-            columnXPos = TableViewStyles.standardHorizontalSpacing + -scrollPosition.x;
-            DrawColumn(columnXPos,"#", x => ((Entity) x.Value).Index, TableViewStyles.leftMargin);
-            columnXPos += TableViewStyles.leftMargin + TableViewStyles.standardHorizontalSpacing;
+            DrawBackground(0, TableViewStyles.LineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.EditorLightBackgroundColor);
+            columnXPos = TableViewStyles.StandardHorizontalSpacing + -scrollPosition.x;
+            DrawColumn(columnXPos,"#", x => ((Entity) x.Value).Index, TableViewStyles.LeftMargin);
+            columnXPos += TableViewStyles.LeftMargin + TableViewStyles.StandardHorizontalSpacing;
             DrawColumnNames();
         }
 
@@ -191,7 +192,7 @@ namespace GBJ.EntityDB.Editor
 
         protected void DrawFooter()
         {
-            DrawBackground(position.height - TableViewStyles.lineHeight - EditorGUIUtility.standardVerticalSpacing, TableViewStyles.lineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.editorBackgroundColor);
+            DrawBackground(position.height - TableViewStyles.LineHeight - EditorGUIUtility.standardVerticalSpacing, TableViewStyles.LineHeight + EditorGUIUtility.standardVerticalSpacing, TableViewStyles.EditorBackgroundColor);
 
             EditorGUILayout.BeginHorizontal();
             {
@@ -246,21 +247,21 @@ namespace GBJ.EntityDB.Editor
         protected void DrawPageView()
         {
             int numberOfPages = Mathf.FloorToInt(tableDictionary.Count / entitiesPrPage);
-            float buttonHeight = TableViewStyles.lineHeight - EditorGUIUtility.standardVerticalSpacing;
+            float buttonHeight = TableViewStyles.LineHeight - EditorGUIUtility.standardVerticalSpacing;
 
             GUI.enabled = pageIndex > 0;
-            if (GUILayout.Button("⇤", TableViewStyles.paginationFirstLastButtonStyle, GUILayout.Height(buttonHeight)))
+            if (GUILayout.Button("⇤", TableViewStyles.PaginationFirstLastButtonStyle, GUILayout.Height(buttonHeight)))
                 pageIndex = 0;
-            if (GUILayout.Button("⟵", TableViewStyles.paginationNextPreviousButtonStyle, GUILayout.Height(buttonHeight)))
+            if (GUILayout.Button("⟵", TableViewStyles.PaginationNextPreviousButtonStyle, GUILayout.Height(buttonHeight)))
                 pageIndex = Mathf.Max(0, pageIndex - 1);
             GUI.enabled = true;
 
-            GUILayout.Label($"Page {pageIndex}", TableViewStyles.centeredLabelStyle, GUILayout.Width(100));
+            GUILayout.Label($"Page {pageIndex}", TableViewStyles.CenteredLabelStyle, GUILayout.Width(100));
 
             GUI.enabled = pageIndex < numberOfPages;
-            if (GUILayout.Button("⟶", TableViewStyles.paginationNextPreviousButtonStyle, GUILayout.Height(buttonHeight)))
+            if (GUILayout.Button("⟶", TableViewStyles.PaginationNextPreviousButtonStyle, GUILayout.Height(buttonHeight)))
                 pageIndex = Mathf.Min(pageIndex + 1, numberOfPages);
-            if (GUILayout.Button("⇥", TableViewStyles.paginationFirstLastButtonStyle, GUILayout.Height(buttonHeight)))
+            if (GUILayout.Button("⇥", TableViewStyles.PaginationFirstLastButtonStyle, GUILayout.Height(buttonHeight)))
                 pageIndex = numberOfPages;
             GUI.enabled = true;
         }
@@ -290,7 +291,7 @@ namespace GBJ.EntityDB.Editor
         protected void DrawColumn(string label, Func<KeyValuePair<string, T>, dynamic> Value)
         {
             DrawColumn(columnXPos, label, Value, columnWidth);
-            columnXPos += columnWidth + TableViewStyles.standardHorizontalSpacing;
+            columnXPos += columnWidth + TableViewStyles.StandardHorizontalSpacing;
         }
         
         protected void DrawColumn(float xPos, string label, Func<KeyValuePair<string, T>, dynamic> Value, float width)
@@ -324,10 +325,10 @@ namespace GBJ.EntityDB.Editor
             }
 
             code += "\n}";
-            
-            string directory = $"{Application.dataPath}/Constants/";
-            Directory.CreateDirectory(directory);
-            File.WriteAllText(Path.Combine(directory, $"{className}.cs"), code);
+
+            string path = Path.Combine(Application.dataPath, ConstantPath);
+            Directory.CreateDirectory(path);
+            File.WriteAllText(Path.Combine(path, $"{className}.cs"), code);
         }
     }
 }
