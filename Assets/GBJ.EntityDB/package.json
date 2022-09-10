@@ -23,9 +23,14 @@
   },
   "samples": [
     {
-      "displayName": "Demo",
-      "description": "Contains demo",
-      "path": "Samples~/Demo"
+      "displayName": "All Types Demo",
+      "description": "Contains demo showcasing the use of all types",
+      "path": "Samples~/TypesDemo"
+    },
+    {
+      "displayName": "Person Demo",
+      "description": "Contains lightweight demo showcasing use of constants",
+      "path": "Samples~/PersonSample"
     }
   ]
 }
